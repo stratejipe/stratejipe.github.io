@@ -1,3 +1,11 @@
 #Ern{
     background: linear-gradient(90deg, rgb(0, 70, 161) 0%, rgb(40, 17, 170) 35%, rgb(255, 123, 0) 100%);
 }
+
+#Crypto {
+    border-radius: 15px 15px;
+    border: 2px solid #21ad8a;
+    width: 500px;
+    height: 25px;
+  }
+

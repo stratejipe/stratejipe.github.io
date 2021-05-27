@@ -1,10 +1,44 @@
-
-
 <html>
 <head>
 
     <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="Tone.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script>
+        
+
+        player = new Tone.Player("https://freepd.com/music/Backbeat.mp3");
+        playback_rate = 0.5; // or 1 (I only implemented these two options)
+        transpose_by = 7;// up 7 half steps, -7 would be down 7 half steps
+    
+        // set playback rate
+        player.playbackRate = playback_rate;
+        player.toDestination();
+    
+    
+        // set pitch shift
+        if (playback_rate == 1){
+            pitch_shift = new Tone.PitchShift({
+            pitch: transpose_by.toString()
+            }).toDestination();
+        } else { //if playbackrate == 0.5 add +12 to pitch to correct
+            trans = transpose_by + 12
+            trans = trans.toString()
+            pitch_shift = new Tone.PitchShift({
+            pitch: trans
+        }).toDestination();
+        }
+        player.disconnect(); // disconnect old player (get overlay of two players otherwise if you repeat this)
+        player.connect(pitch_shift);
+
+        function playSound() {
+            player.start();
+            console.log("hi");
+        }
+    
+        
+        </script>
 
 </head>
 
@@ -14,10 +48,14 @@ NO MANS LAND!!! :D
 
     <p id="entrance"> Stand at the wall. Who is there? </p>
     <button id="Ern" onclick="color()">Change Color</button>
-    <button onclick="cryptoAdder()">Earn Free Crypto</button>
+    <button id="Crypto" onclick="cryptoAdder()">Earn Free Crypto</button>
     <button onclick="cpsAdder()">CLICK REALLY FAST</button>
     <p id="counter">0</p>
     <p id="CPS">0</p>
+    <a href="https://en.wikipedia.org/wiki/Alsop,_Virginia">I dont know what youre talking about!!!</a>
+    <button onclick="playSound()">DO IT!!!</button>
     
+
 </body>
 </html>
+

@@ -19,3 +19,4 @@ function cpsAdder() {
 }
 
 setInterval(() => {document.getElementById("CPS").innerHTML = clicks; clicks = 0;}, 1000);
+
